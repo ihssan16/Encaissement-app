@@ -1,0 +1,127 @@
+// Variables de couleurs modernes
+$primary-blue: #3b82f6;
+$primary-purple: #8b5cf6;
+$success-green: #10b981;
+$warning-orange: #f59e0b;
+$error-red: #ef4444;
+$dark-gray: #1f2937;
+$medium-gray: #6b7280;
+$light-gray: #f3f4f6;
+$white: #ffffff;
+$border-color: rgba(255, 255, 255, 0.3);
+/* Structure principale */
+:host {
+  display: block;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.payment-form-container {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* En-tête */
+.form-title {
+  color: #2d3748;
+  font-size: 24px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Champs de formulaire */
+.form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 90%;
+    padding: 12px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #f8fafc;
+    transition: all 0.2s;
+
+    &:focus {
+      border-color: #4299e1;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+      outline: none;
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+}
+
+/* Bouton */
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background:#8b5cf6;;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #3182ce;
+  }
+
+  &:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+  }
+}
+
+/* Messages d'erreur */
+.error-message {
+  color: #e53e3e;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .payment-form-container {
+    padding: 20px;
+    border-radius: 0;
+  }
+  
+  :host {
+    padding: 0;
+  }
+}
+.dark-theme {
+  :host {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) fixed;
+  }
+  
+  .profil-container {
+    background: rgba(30, 30, 30, 0.85);
+  }
+}

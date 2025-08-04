@@ -1,0 +1,17 @@
+<p>layout works!</p>
+<div class="app-layout">\
+  <aside class="sidebar">
+    <h3>Encaissement</h3>
+    <nav>
+      <a routerLink="/paiements">Liste des paiements</a>
+      <a routerLink="/ajouter">Ajouter un paiement</a>
+      <a routerLink="/login">Déconnexion</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </main>
+</div>
+

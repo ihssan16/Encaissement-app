@@ -1,0 +1,21 @@
+<div class="recent-payments">
+  <h2>📄 Paiements récents</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Faculté</th>
+        <th>Date</th>
+        <th>Montant (MAD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let paiement of recentPayments">
+        <td>{{ paiement.client }}</td>
+        <td>{{ paiement.faculte }}</td>
+        <td>{{ paiement.date }}</td>
+        <td>{{ paiement.montant | number }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,33 @@
+<div class="register-container">
+  <div class="register-box">
+    <h2>Créer un compte</h2>
+
+    <form (ngSubmit)="register()" #formRegister="ngForm" class="register-form">
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        placeholder="Adresse e-mail"
+        required
+        class="register-input"
+      />
+
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Mot de passe"
+        required
+        class="register-input"
+      />
+
+      <button type="submit" class="register-button">Créer le compte</button>
+    </form>
+
+    <p class="register-link">
+      Déjà un compte ?
+      <a routerLink="/login">Se connecter</a>
+    </p>
+  </div>
+</div>
+

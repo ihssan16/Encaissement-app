@@ -1,0 +1,11 @@
+<div class="dashboard-cards">
+    <div class="card" *ngFor="let card of cards">
+    <span class="icon">{{card.icon}}</span>
+    <h3>{{card.title}}</h3>
+    <p>{{card.value | number:'1.0-0'}} 
+      <span *ngIf="card.key === 'total'">MAD</span>
+    </p>
+  </div>
+  
+</div>
+

@@ -1,0 +1,19 @@
+<ng-container *ngIf="isLoggedIn(); else showLogin">
+  <div class="wrapper">
+    
+    <div
+      class="main-content"
+      [ngStyle]="{ 'margin-left': isSidebarClosed ? '60px' : '220px' }"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #showLogin>
+  <router-outlet></router-outlet>
+</ng-template>
+
+
+
+

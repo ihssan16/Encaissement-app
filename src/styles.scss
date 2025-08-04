@@ -1,0 +1,74 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.custom-dialog {
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+}
+
+/* You can add global styles to this file, and also import other style files */
+/* Ajoutez ceci à la fin de votre fichier styles.scss global */
+body {
+ color: var(--text-color);
+  transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color:var(--background-color);
+}
+
+.dark-theme body {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+/* 🌗 Thèmes globaux */
+
+:root {
+     --table-header-bg: #e0e0e0;
+  --table-header-text: #000000;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --section-bg: #f9f9f9;
+  --card-bg: #f5f5f5;//ffffff
+  --button-bg: #4CAF50;
+  --button-text: white;
+  --table-bg: #ffffff;//f0f0f0
+  --table-text: #000000;
+  --kpi-bg: #f8f9fa;
+  --primary-color: #42A5F5;
+}
+[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #f1f1f1;
+  --card-bg: #1e1e1e;
+  --table-bg: #1f1f1f;
+  --table-text: #ffffff;
+  --kpi-bg: #2a2a2a;
+  --primary-color: #90caf9;
+}
+.dark-theme {
+--table-header-bg: #2e2e2e;
+  --table-header-text: #ffffff;
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --section-bg: #1e1e1e;
+  --card-bg: #1e1e1e;
+   --button-bg: #4CAF50;
+  --button-text: white;
+  --table-bg: #2a2a2a;
+  --table-text: #f5f5f5;
+}
+
+/* Appliquer les couleurs globalement */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: Arial, sans-serif;
+  
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

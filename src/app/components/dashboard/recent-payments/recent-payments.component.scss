@@ -1,0 +1,38 @@
+.recent-payments {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  margin-left: 220px; /* Largeur de la sidebar ouverte */
+  transition: margin-left 0.3s ease; /* Animation synchronisée avec la sidebar */
+  
+
+  h2 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--table-bg);
+  color: var(--table-text);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: var(--table-header-bg);
+  color: var(--table-header-text);
+    }
+
+    tr:hover {
+      background-color: var(--hover-row-bg) ;
+    }
+  }
+}

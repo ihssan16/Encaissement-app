@@ -1,0 +1,34 @@
+<div class="statistics-container">
+  <h2>📊 Statistiques de Paiement</h2>
+
+  <table class="payment-table">
+    <thead>
+      <tr>
+        <th>Mois</th>
+        <th>Montant (MAD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of payments">
+        <td>{{ payment.month }}</td>
+        <td>{{ payment.amount | number }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Indicateurs clés -->
+  <div class="kpi-cards">
+    <div class="kpi-card">
+      <h3>Total</h3>
+      <p>{{ total | number }} MAD</p>
+    </div>
+    <div class="kpi-card">
+      <h3>Moyenne</h3>
+      <p>{{ average | number }} MAD</p>
+    </div>
+    <div class="kpi-card">
+      <h3>Maximum</h3>
+      <p>{{ highest | number }} MAD</p>
+    </div>
+  </div>
+</div>

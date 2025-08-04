@@ -1,0 +1,112 @@
+<!-- src/app/components/paiement-form/paiement-form.component.html -->
+<div class="form-container">
+  <!-- Loader -->
+  <div *ngIf="isLoading" class="loading-indicator">
+    <div class="spinner"></div>
+    <span>Chargement en cours...</span>
+  </div>
+
+  <!-- Formulaire -->
+  <form *ngIf="!isLoading" 
+        (ngSubmit)="ajouterPaiement()" 
+        #formPaiement="ngForm"
+        class="paiement-form">
+    
+    <h2>Ajouter un paiement</h2>
+
+    <!-- Groupe Client -->
+    <div class="form-group">
+      <label for="client">Client :</label>
+      <input type="text" 
+             id="client"
+             [(ngModel)]="paiement.client" 
+             name="client" 
+             required
+             #clientInput="ngModel"
+             [class.invalid]="clientInput.invalid && clientInput.touched">
+      <div *ngIf="clientInput.invalid && clientInput.touched" 
+           class="error-message">
+        Le client est requis
+      </div>
+    </div>
+
+    <!-- Groupe Montant -->
+    <div class="form-group">
+      <label for="montant">Montant :</label>
+      <input type="number" 
+             id="montant"
+             [(ngModel)]="paiement.montant" 
+             name="montant" 
+             required
+             min="0"
+             step="0.01"
+             #montantInput="ngModel"
+             [class.invalid]="montantInput.invalid && montantInput.touched">
+      <div *ngIf="montantInput.invalid && montantInput.touched" 
+           class="error-message">
+        Montant invalide (doit être positif)
+      </div>
+    </div>
+
+    <!-- Groupe Moyen de paiement -->
+    <div class="form-group">
+      <label for="moyen">Moyen de paiement :</label>
+      <select id="moyen" 
+              [(ngModel)]="paiement.moyen" 
+              name="moyen" 
+              required>
+        <option value="espèces">Espèces</option>
+        <option value="carte">Carte</option>
+        <option value="virement">Virement</option>
+      </select>
+    </div>
+
+    <!-- Groupe Description -->
+    <div class="form-group">
+      <label for="service">Service à payer :</label>
+    <select id="service" 
+            [(ngModel)]="paiement.description" 
+            name="description"
+            required>
+      <option value="">-- Choisir un service --</option>
+      <option value="Frais de scolarité">Frais de scolarité</option>
+      <option value="Hébergement et restaurant">Hébergement et restaurant</option>
+      <option value="Bibliothèque et ressources">Bibliothèque et ressources</option>
+      <option value="Activités et sport">Activités et sport</option>
+      <option value="Transport">Transport</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+  <label for="faculte">Faculté :</label>
+  <select id="faculte" 
+          [(ngModel)]="paiement.faculte" 
+          name="faculte"
+          required>
+    <option value="">-- Sélectionnez une faculté --</option>
+    <option value="Sciences">Sciences</option>
+    <option value="Lettres">Lettres</option>
+    <option value="Droit">Droit</option>
+    <option value="Médecine">Médecine</option>
+  </select>
+</div>
+
+
+    
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button type="button" 
+              class="btn btn-cancel"
+              routerLink="/paiements">
+        Annuler
+      </button>
+      <button type="submit" 
+              class="btn btn-submit"
+              [disabled]="formPaiement.invalid || isLoading">
+        {{ isLoading ? 'Enregistrement...' : 'Ajouter' }}
+      </button>
+    </div>
+  </form>
+</div>
+

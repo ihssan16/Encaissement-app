@@ -1,0 +1,27 @@
+
+<div class="modal-overlay" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>⚙️ Modifier mes informations</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+      <label>Nom :</label>
+      <input type="text" formControlName="nom">
+        <div *ngIf="editForm.get('nom')?.invalid && editForm.get('nom')?.touched" class="error-message">
+          Le nom est requis
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email :</label>
+        <input type="email" formControlName="email">
+        <div *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched" class="error-message">
+          {{ editForm.get('email')?.hasError('required') ? 'L\'email est requis' : 'Veuillez entrer un email valide' }}
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button type="button" (click)="close()">Annuler</button>
+        <button type="submit" [disabled]="editForm.invalid">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+</div>

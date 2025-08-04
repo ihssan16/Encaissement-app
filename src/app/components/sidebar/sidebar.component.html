@@ -1,0 +1,33 @@
+<div class="sidebar" [class.closed]="isClosed">
+  <!-- Bouton pour ouvrir/fermer la sidebar -->
+  <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+
+  <!-- 🔔 Notification Bell avec texte -->
+  <div class="notification-container">
+    <a class="notification-btn" routerLink="/notifications" routerLinkActive="active-link">
+      🔔 <span class="notif-text">Notification</span>
+      <span *ngIf="notifications.length" class="badge">{{ notifications.length }}</span>
+    </a>
+
+    <!-- Liste déroulante des notifications -->
+    <div *ngIf="showNotifications" class="notification-list">
+      <div *ngFor="let notification of notifications" class="notification-item">
+        <strong>{{ notification.message }}</strong><br />
+        <small>{{ notification.time }}</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Liens de navigation -->
+  <div *ngIf="!isClosed" class="links">
+    <ul>
+      <li><a routerLink="/tableaudebord" routerLinkActive="active-link">🏠 Tableau de bord</a></li> 
+      <li><a routerLink="/paiements">📄 Paiements</a></li>
+      <li><a routerLink="/profil">👤 Mon Profil</a></li>
+      <li><a routerLink="/login">🔐 Connexion</a></li>
+      <li (click)="logout()" class="logout-link">🚪 Déconnexion</li>
+
+
+    </ul>
+  </div>
+</div>

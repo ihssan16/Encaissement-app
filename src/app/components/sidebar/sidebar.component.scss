@@ -1,0 +1,111 @@
+
+.sidebar {
+  height: 100vh;
+  background: linear-gradient(to bottom right, #4b6cb7, #182848);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+  padding-top: 20px;
+  width: 220px;
+  z-index: 1000;
+}
+
+.sidebar.closed {
+  width: 60px;
+}
+
+.sidebar .toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.sidebar h2 {
+  margin-left: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  padding-left: 15px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #ffd700;
+}
+.notification-container {
+  position: relative;
+  margin: 10px;
+  text-align: center;
+}
+
+.notification-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.notif-text {
+  display:none;
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 10px;
+}
+
+.notification-list {
+  position: absolute;
+  top: 35px;
+  right: -85px;
+  width: 230px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}

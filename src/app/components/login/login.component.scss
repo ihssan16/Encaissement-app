@@ -1,0 +1,107 @@
+/* Ajoutez ces règles globales */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  height: 100vh;
+  width: 100vw; 
+  position: absolute;
+top: 0;
+left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px; // Ajout pour le responsive
+
+  .login-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: auto; 
+    h2 {
+      margin-bottom: 24px;
+      color: #333;
+      font-size: 24px;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .login-input {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:focus {
+          border-color: #6a82fb;
+          box-shadow: 0 0 0 3px rgba(106, 130, 251, 0.2);
+          outline: none;
+        }
+      }
+
+      .login-button {
+        padding: 12px;
+        background-color: #6a82fb;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+
+        &:hover {
+          background-color: #5b72e6;
+        }
+
+        &:active {
+          transform: translateY(1px);
+        }
+      }
+    }
+
+    .login-info {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #666;
+
+      a {
+        color: #6a82fb;
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// Media queries pour le responsive
+@media (max-width: 480px) {
+  .login-container {
+    padding: 15px;
+    min-height: 100vh;
+    .login-box {
+      padding: 30px 20px;
+      border-radius: 12px;
+    }
+  }
+}

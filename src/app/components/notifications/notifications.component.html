@@ -1,0 +1,16 @@
+<div class="notifications-wrapper">
+  <h2>Notifications</h2>
+
+  <div *ngIf="notifications.length === 0" class="empty">
+    Aucune notification pour le moment.
+  </div>
+
+  <ul class="notifications-list" *ngIf="notifications.length > 0">
+    <li *ngFor="let notif of notifications" class="notification-item">
+      <div class="message">{{ notif.message }}</div>
+      <div class="time">{{ notif.time }}</div>
+    </li>
+  </ul>
+</div>
+
+

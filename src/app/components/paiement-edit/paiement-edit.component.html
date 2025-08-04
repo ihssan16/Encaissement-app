@@ -1,0 +1,60 @@
+<div class="payment-page-wrapper with-sidebar">
+  <div class="payment-form-container">
+    <div *ngIf="isLoading" class="loading-indicator">
+      Chargement en cours...
+    </div>
+
+<form [formGroup]="paiementForm" (ngSubmit)="modifierPaiement()" *ngIf="!isLoading">
+  <h1 class="form-title">Modifier le Paiement</h1>
+  
+  <input type="hidden" formControlName="_id">
+
+  <div class="form-group">
+    <label>Client :</label>
+    <input type="text" formControlName="client" required>
+    <div *ngIf="paiementForm.get('client')?.invalid && paiementForm.get('client')?.touched" class="error-message">
+      Le client est requis
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Montant :</label>
+    <input type="number" formControlName="montant" required>
+    <div *ngIf="paiementForm.get('montant')?.invalid && paiementForm.get('montant')?.touched" class="error-message">
+      Montant invalide
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Moyen de paiement :</label>
+    <select formControlName="moyen">
+      <option value="espèces">Espèces</option>
+      <option value="carte">Carte</option>
+      <option value="virement">Virement</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+  <label>Faculté :</label>
+  <select formControlName="faculte">
+    <option *ngFor="let f of facultes" [value]="f">{{f}}</option>
+  </select>
+  <div *ngIf="paiementForm.get('faculte')?.invalid && paiementForm.get('faculte')?.touched" class="error-message">
+    La faculté est requise
+  </div>
+</div>
+
+  <div class="form-group">
+    <label>Service payé :</label>
+  <select formControlName="description">
+    <option *ngFor="let s of services" [value]="s">{{s}}</option>
+  </select>
+  <div *ngIf="paiementForm.get('description')?.invalid && paiementForm.get('description')?.touched" class="error-message">
+    Le service est requis
+  </div>
+  </div>
+
+  <button type="submit" [disabled]="paiementForm.invalid || isLoading">
+    {{ isLoading ? 'Enregistrement...' : 'Enregistrer les modifications' }}
+  </button>
+</form>

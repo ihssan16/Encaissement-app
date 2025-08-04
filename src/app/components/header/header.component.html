@@ -1,0 +1,10 @@
+<p>header works!</p>
+<header class="header">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher..." />
+  <div class="notif" (click)="toggleNotifications()">🔔</div>
+  <div *ngIf="showNotif" class="notif-box">
+    <ul>
+      <li *ngFor="let n of notifications">{{ n }}</li>
+    </ul>
+  </div>
+</header>

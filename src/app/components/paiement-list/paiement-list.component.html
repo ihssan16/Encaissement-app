@@ -1,0 +1,185 @@
+<div class="list-container">
+  <div class="list-header">
+    <h2>Liste des paiements</h2>
+    <button class="btn btn-primary" routerLink="/ajouter">
+      <i class="icon-plus"></i>
+      Ajouter un paiement
+    </button>
+  </div>
+
+  <div class="search-bar">
+    <input 
+      type="text" 
+      [(ngModel)]="searchTerm" 
+      (input)="onSearchChange()"
+      placeholder="🔍 Rechercher un paiement..." 
+    /> 
+  </div>
+
+  <!-- Informations sur la pagination -->
+  <div class="pagination-info" *ngIf="totalItems > 0">
+    <span>
+      Affichage de {{ startIndex }} à {{ endIndex }} sur {{ totalItems }} paiements
+    </span>
+    
+    <!-- Sélecteur du nombre d'éléments par page -->
+    <div class="items-per-page">
+      <label>Éléments par page:</label>
+      <select [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange(itemsPerPage)">
+        <option *ngFor="let size of pageSizeOptions" [value]="size">
+          {{ size }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table class="payments-table">
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Montant</th>
+          <th>Moyen</th>
+          <th>Date</th>
+          <th>Service payé</th>
+          <th>Faculté</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Utiliser paiementsPagines au lieu de paiementsFiltres -->
+        <tr *ngFor="let paiement of paiementsPagines; let i = index"
+            [class.even]="i % 2 === 0"
+            [class.odd]="i % 2 !== 0">
+          <td>
+            <div class="client-info">
+              <strong>{{ paiement.client }}</strong>
+            </div>
+          </td>
+          <td>
+            <div class="amount">
+              {{ paiement.montant | number:'1.2-2' }}MAD
+            </div>
+          </td>
+          <td>
+            <span class="payment-method" [class]="'method-' + paiement.moyen">
+              {{ paiement.moyen }}
+            </span>
+          </td>
+          <td>
+            <div class="date">
+              {{ paiement.date | date: 'dd/MM/yyyy HH:mm' }}
+            </div>
+          </td>
+          <td>
+            <div class="description">
+              {{ paiement.description || '-' }}
+            </div>
+          </td>
+          <td>
+            <div class="faculte">
+              {{ paiement.faculte || '-' }}
+            </div>
+          </td>
+          <td>
+            <div class="actions">
+              <button class="btn btn-edit"
+                      (click)="modifierPaiement(paiement._id)"
+                      title="Modifier" 
+                      routerLink="modifier/:id">
+                <i class="icon-edit"></i>
+                Modifier
+              </button>
+              <button class="btn btn-delete"
+                      (click)="supprimerPaiement(paiement._id)"
+                      title="Supprimer">
+                <i class="icon-delete"></i>
+                Supprimer
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Message si aucun paiement -->
+    <div *ngIf="paiements.length === 0" class="empty-state">
+      <div class="empty-icon">📋</div>
+      <h3>Aucun paiement trouvé</h3>
+      <p>Commencez par ajouter votre premier paiement</p>
+      <button class="btn btn-primary" routerLink="/ajouter">
+        Ajouter un paiement
+      </button>
+    </div>
+
+    <!-- Message si aucun résultat de recherche -->
+    <div *ngIf="paiements.length > 0 && paiementsFiltres.length === 0" class="no-results">
+      <div class="empty-icon">🔍</div>
+      <h3>Aucun résultat trouvé</h3>
+      <p>Essayez de modifier votre recherche</p>
+    </div>
+  </div>
+
+  <!-- Contrôles de pagination -->
+  <div class="pagination-controls" *ngIf="totalPages > 1">
+    <div class="pagination-nav">
+      <!-- Bouton précédent -->
+      <button 
+        class="btn btn-pagination" 
+        (click)="previousPage()" 
+        [disabled]="currentPage === 1"
+        title="Page précédente">
+        ‹ Précédent
+      </button>
+
+      <!-- Numéros de pages -->
+      <div class="page-numbers">
+        <!-- Première page si pas visible -->
+        <button 
+          *ngIf="getPageNumbers()[0] > 1"
+          class="btn btn-page-number" 
+          (click)="goToPage(1)">
+          1
+        </button>
+        
+        <!-- Points de suspension si nécessaire -->
+        <span *ngIf="getPageNumbers()[0] > 2" class="page-dots">...</span>
+
+        <!-- Pages visibles -->
+        <button 
+          *ngFor="let page of getPageNumbers()" 
+          class="btn btn-page-number"
+          [class.active]="page === currentPage"
+          (click)="goToPage(page)">
+          {{ page }}
+        </button>
+
+        <!-- Points de suspension si nécessaire -->
+        <span *ngIf="getPageNumbers()[getPageNumbers().length - 1] < totalPages - 1" 
+              class="page-dots">...</span>
+
+        <!-- Dernière page si pas visible -->
+        <button 
+          *ngIf="getPageNumbers()[getPageNumbers().length - 1] < totalPages"
+          class="btn btn-page-number" 
+          (click)="goToPage(totalPages)">
+          {{ totalPages }}
+        </button>
+      </div>
+
+      <!-- Bouton suivant -->
+      <button 
+        class="btn btn-pagination" 
+        (click)="nextPage()" 
+        [disabled]="currentPage === totalPages"
+        title="Page suivante">
+        Suivant ›
+      </button>
+    </div>
+
+    <!-- Informations de pagination -->
+    <div class="pagination-summary">
+      Page {{ currentPage }} sur {{ totalPages }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Montant</th>
+      <th>Moyen</th>
+      <th>Description</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let paiement of mesPaiements">
+      <td>{{ paiement.client }}</td>
+      <td>{{ paiement.montant }} MAD</td>
+      <td>{{ paiement.moyen }}</td>
+      <td>{{ paiement.description }}</td>
+      <td>{{ paiement.date | date:'short' }}</td>
+    </tr>
+  </tbody>
+</table>
