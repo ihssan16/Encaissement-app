@@ -25,7 +25,8 @@ export class PaiementComponent implements OnInit{
       montant: 150,
       moyen: 'carte',
       description: 'Frais d’inscription',
-      faculte:'Medcine'
+      faculte:'Medcine',
+      pieceJoint:''
     };
 
     this.paimentService.ajouterPaiement(nouveauPaiement).subscribe(() => {

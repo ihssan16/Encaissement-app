@@ -584,3 +584,37 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     }
   }
 }
+/* Ajoute ce CSS à ton fichier paiement-list.component.scss */
+
+.btn-receipt {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 2px;
+  
+  &:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  i {
+    margin-right: 4px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

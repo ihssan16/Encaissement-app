@@ -40,7 +40,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { MesPaiementsComponent } from './pages/mes-paiements/mes-paiements.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
-
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     NotificationsComponent,
@@ -64,6 +64,7 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
 
   ],
   imports: [
+    NgChartsModule.forRoot(),
     MatSnackBarModule,
     MatDialogModule,
     MatButtonModule,

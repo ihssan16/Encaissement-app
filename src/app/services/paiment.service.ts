@@ -16,6 +16,11 @@ export class PaimentService {
    getPaiements(): Observable<Paiement[]> {
     return this.http.get<Paiement[]>(this.apiUrl);
   }
+  getEtudiants() {
+  return this.http.get<any[]>('http://localhost:3000/etudiants');
+}
+
+
 getPaiementsByUtilisateur(userId: string): Observable<Paiement[]> {
   return this.http.get<Paiement[]>(`${this.apiUrl}/utilisateur/${userId}`);
 }
