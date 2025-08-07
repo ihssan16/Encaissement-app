@@ -31,8 +31,12 @@ export class PaiementFormComponent implements OnInit{
   fraisSelectionne: number = 0;   // Frais forcé
 
 // paiement-form.component.ts
-moyensPaiement: string[] = ['Espèce', 'Chèque', 'Virement bancaire', 'Carte bancaire'];
-
+moyensPaiement = [
+  { value: 'espece', label: 'Espèce' },
+  { value: 'cheque', label: 'Chèque' },
+  { value: 'virement', label: 'Virement bancaire' },
+  { value: 'carte', label: 'Carte bancaire' },
+];
 
   servicesDisponibles = [
     {name: 'Frais de scolarité', price: 10000},

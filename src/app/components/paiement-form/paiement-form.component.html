@@ -66,7 +66,7 @@
           name="moyen"
           required>
     <option value="">-- Sélectionnez un moyen --</option>
-    <option *ngFor="let moyen of moyensPaiement" [value]="moyen">{{ moyen }}</option>
+    <option *ngFor="let moyen of moyensPaiement" [value]="moyen.value">{{ moyen.label }}</option>
   </select>
 </div>
 
